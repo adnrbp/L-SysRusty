@@ -1,4 +1,4 @@
-extern create rand; //new-2
+extern crate rand; //new-2
 
 use std::io;
 use std::cmp::Ordering; //new-3
@@ -17,8 +17,13 @@ fn main() {
     //get number
     io::stdin().read_line(&mut guess)
         .expect("Failed to read line");
-    println!("You guessed: {}", guess);
 
+    //new-3.5: string to real-num, shadow prev "guess"
+    let guess: u32 = guess.trim().parse()
+        .expect("Please type a number!");
+
+    
+    println!("You guessed: {}", guess);
     //new-3
     match guess.cmp(&secret_number){
         Ordering::Less => println!("Too small!"),
