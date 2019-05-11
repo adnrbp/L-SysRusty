@@ -32,6 +32,8 @@ fn main() {
 
     copy_values();
 
+    borrowing_values();
+
 }
 
 fn take(v: Vec<i32>){
@@ -53,6 +55,8 @@ fn ownership_validation(){
 	println!("Finished");
 }
 
+
+
 fn cop(a: i32, b: i32){
 	println!("{}", a+b);
 }
@@ -64,4 +68,49 @@ fn copy_values(){
 	//not unallocated in this function, still exists here
 	//values copied (exists in stack, not the heap)
 	println!("we have a: {} and b: {}", a,b);
+}
+
+
+
+
+
+//transfer ownership and return it
+fn return_value(v: Vec<i32>) -> Vec<i32> {
+    println!("{}", v[120] + v[111]);
+    v
+}
+
+//takes a reference to the vector
+fn borrow1(v: &Vec<i32>) {
+	//call a pointer
+    println!("{}", (*v)[10]+(*v)[12]);
+}
+
+fn borrow2(v: &Vec<i32>) {
+	//call directly the values
+	//more idiomatic
+    println!("{}", v[10] + v[11]);
+    //not show the actual memory reference value in print 
+    //only follow the ref to the actual data value 
+    //println!("{}", &v[10] + &v[11]);
+}
+
+fn borrowing_values(){
+	let mut v = Vec::new();
+
+	for i in 1..1000 {
+	    v.push(i);
+	}
+
+	v = return_value(v);
+
+	println!("Still own v: {} {}", v[0], v[1]);
+
+	borrow1(&v);
+	println!("Still own v: {} {}", v[0], v[1]);
+
+	borrow2(&v);
+	println!("Still own v: {} {}", v[0], v[1]);
+
+
 }
