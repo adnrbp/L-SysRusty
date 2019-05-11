@@ -34,6 +34,8 @@ fn main() {
 
     borrowing_values();
 
+    vector_counter();
+
 }
 
 fn take(v: Vec<i32>){
@@ -113,4 +115,22 @@ fn borrowing_values(){
 	println!("Still own v: {} {}", v[0], v[1]);
 
 
+}
+
+
+
+
+
+fn vector_counter(){
+    let v = vec![4,5,3,6,7,4,2,8,3,5,8,7,3,4,4];
+    for &i in &v {
+    	let r = count(&v, i);
+    	println!("{} is repeated {} times", i, r);
+    }
+    //v still exists until function ends
+    println!("{}", v[1] );
+}
+
+fn count(v: &Vec<i32>,val: i32) -> usize {
+    v.into_iter().filter(|&&x| x == val).count()
 }
