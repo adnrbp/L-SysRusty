@@ -22,7 +22,30 @@ fn main() {
     //Concatenate Strings
     let h = String::from("Big, ");
     let w = String::from("Planet! ");
+    //(Self, &String)
     let concat = h + &w;
     println!("{}", concat);
 
+
+    //validate ownership
+    ownership_validation();
+
+}
+
+fn take(v: Vec<i32>){
+	println!("we took v: {}", v[10] + v[100]);
+}
+fn ownership_validation(){
+	//define a vector of dynamic size
+	let mut v = Vec::new();
+
+	//fill the vector with data
+	for i in 1..1000 {
+	    v.push(i);
+	}
+	//transfer ownership from this function to "take" fn
+	//never return ownership ("moving")
+	take(v);
+
+	println!("Finished");
 }
