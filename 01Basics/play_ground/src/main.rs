@@ -30,6 +30,8 @@ fn main() {
     //validate ownership
     ownership_validation();
 
+    copy_values();
+
 }
 
 fn take(v: Vec<i32>){
@@ -45,7 +47,21 @@ fn ownership_validation(){
 	}
 	//transfer ownership from this function to "take" fn
 	//never return ownership ("moving")
+	//Vector exists on the heap
 	take(v);
 
 	println!("Finished");
+}
+
+fn cop(a: i32, b: i32){
+	println!("{}", a+b);
+}
+fn copy_values(){
+	let a = 32;
+	let b = 45;
+
+	cop(a,b);
+	//not unallocated in this function, still exists here
+	//values copied (exists in stack, not the heap)
+	println!("we have a: {} and b: {}", a,b);
 }
