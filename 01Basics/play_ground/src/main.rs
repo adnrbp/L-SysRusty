@@ -1,5 +1,6 @@
 mod in_array;
 mod own_borrow;
+mod struct_meth;
 
 
 fn main() {
@@ -17,5 +18,6 @@ fn main() {
 
     own_borrow::vector_counter();
 
-
+    //Struct usage
+    struct_meth::area_finder();
 }

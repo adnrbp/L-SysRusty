@@ -3,6 +3,7 @@ pub fn take(v: Vec<i32>){
 	println!("we took v: {}", v[10] + v[100]);
 }
 pub fn ownership_validation(){
+	println!("\n");
 	//define a vector of dynamic size
 	let mut v = Vec::new();
 
