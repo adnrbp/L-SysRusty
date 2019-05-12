@@ -1,27 +1,40 @@
 
+use std::fmt;
+
 #[derive(Debug)]
 struct Object {
     width: u32,
     height: u32,
 }
 
+//Methods
 impl Object {
 	fn area(&self) -> u32 {
 		self.width * self.height
 	}
-	fn new(width: u32, height: u32) -> Object {
-		//this version cannot avoid ": width"
-		Object {
-			width: width,
-			height: height,
-		}
-	}
+
 
 	fn show(&self){
 		println!("\n{} x {} with area: {}", self.width, self.height, self.area());
 	}
 }
 
+//Related Functions
+impl Object {
+    fn new(width: u32, height: u32) -> Object {
+		//this version cannot avoid ": width"
+		Object {
+			width: width,
+			height: height,
+		}
+	}
+}
+
+impl fmt::Display for Object {
+	fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+		write!(f, "({}, {})", self.width, self.height)
+	}
+}
 
 
 fn area(obj: &Object) -> u32 {
@@ -50,6 +63,14 @@ pub fn area_finder(){
 	//using object function declared:
 	ob.show();
 	obj.show();
+
+
+	println!("{:#?}", ob);
+	println!("{:#?}", obj);
+
+	println!("{}", obj);
+
+
 
     
 }
