@@ -1,0 +1,6 @@
+[package]
+name = "multi_code"
+version = "0.1.0"
+authors = ["adnrbp <adnrbp@users.noreply.github.com>"]
+
+[dependencies]

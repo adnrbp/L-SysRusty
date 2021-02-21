@@ -1,0 +1,6 @@
+[package]
+name = "play_ground"
+version = "0.1.0"
+authors = ["adnrbp <adnrbp@users.noreply.github.com>"]
+
+[dependencies]
